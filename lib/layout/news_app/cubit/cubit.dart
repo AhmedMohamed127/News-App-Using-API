@@ -61,18 +61,18 @@ class NewsCubit extends Cubit<NewsStates>
     emit(NewsGetBusinessLoadingState());
 
     DioHelper.getData(
-      url: 'v2/top-headlines',
+      url: "v2/everything",
       query:
       {
-        'country':'eg',
-        'category':'business',
-        'apiKey':'65f7f556ec76449fa7dc7c0069f040ca',
+        'q':'tesla',
+        'from':'2023-02-28',
+        'sortBy':'publishedAt',
+        'apiKey':'05d76fa9b3d540248231c37deef96c8e',
       },
     ).then((value)
     {
       //print(value.data['articles'][0]['title']);
       business = value.data['articles'];
-      print(business[0]['title']);
 
       emit(NewsGetBusinessSuccessState());
     }).catchError((error){
@@ -95,7 +95,7 @@ class NewsCubit extends Cubit<NewsStates>
         {
           'country':'eg',
           'category':'sports',
-          'apiKey':'65f7f556ec76449fa7dc7c0069f040ca',
+          'apiKey':'05d76fa9b3d540248231c37deef96c8e',
         },
       ).then((value)
       {
@@ -126,9 +126,9 @@ class NewsCubit extends Cubit<NewsStates>
         url: 'v2/top-headlines',
         query:
         {
-          'country':'eg',
+          'country':'us',
           'category':'science',
-          'apiKey':'65f7f556ec76449fa7dc7c0069f040ca',
+          'apiKey':'05d76fa9b3d540248231c37deef96c8e',
         },
       ).then((value)
       {
